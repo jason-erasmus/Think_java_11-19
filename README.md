@@ -1,6 +1,6 @@
 # Think Java Chapters 6 - 9
 
-Completed practice exercises for chapters 6 to 9 of Think Java.
+Completed practice exercises for chapters 11 to 19 of Think Java.
 
 ## Installation
 

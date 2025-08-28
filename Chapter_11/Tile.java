@@ -1,3 +1,5 @@
+package Chapter_11;
+
 public class Tile {
     private char letter;
     private int value;

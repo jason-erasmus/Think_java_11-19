@@ -9,7 +9,7 @@ fi
 
 echo "Docker is installed. Continuing build..."
 
-REPO_URL="https://github.com/jason-erasmus/Think_java_6-9.git"
+REPO_URL="https://github.com/jason-erasmus/Think_java_11-19.git"
 REPO_NAME="Think_java_11-19"
 CLONE_DIR="Think_java_11-19"
 

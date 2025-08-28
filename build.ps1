@@ -9,8 +9,8 @@ if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
 
 Write-Host "Docker is installed. Continuing build..."
 
-$REPO_URL = "https://github.com/jason-erasmus/Think_java_6-9.git"
-$CLONE_DIR = "Think_java_6-9"
+$REPO_URL = "https://github.com/jason-erasmus/Think_java_11-19.git"
+$CLONE_DIR = "Think_java_11-19"
 
 Write-Host "Cloning the repository..."
 if (Test-Path $CLONE_DIR) {
