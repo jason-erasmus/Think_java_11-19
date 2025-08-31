@@ -1,11 +1,18 @@
-package Chapter_12;
+// package Chapter_12;
 // package Chapter_11;
 
 import java.util.Arrays;
 
 public class Card {
+
     private int rank;
     private int suit;
+    public static final String[] RANKS = {
+            null, "Ace", "2", "3", "4", "5", "6", "7",
+            "8", "9", "10", "Jack", "Queen", "King" };
+
+    public static final String[] SUITS = {
+            "Clubs", "Diamonds", "Hearts", "Spades" };
 
     public Card(int rank, int suit) {
         this.rank = rank;
@@ -14,11 +21,7 @@ public class Card {
 
     // Card ranks and suits
     public String toString() {
-        String[] ranks = { null, "Ace", "2", "3", "4", "5", "6",
-                "7", "8", "9", "10", "Jack", "Queen", "King" };
-        String[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
-        String s = ranks[this.rank] + " of " + suits[this.suit];
-        return s;
+        return RANKS[this.rank] + " of " + SUITS[this.suit];
     }
 
     // Compare card values
@@ -68,14 +71,33 @@ public class Card {
     }
 
     // Histogram of cards
-    public static int suitHist(Card[] hand) {
+    public static int[] suitHist(Card[] hand) {
 
-        int count = 0;
+        int[] counts = new int[SUITS.length];
+
         for (int i = 0; i < hand.length; i++) {
-            for (int j = 0; j < hand.suit.length; j++) {
+            int suitIndex = hand[i].suit;
+            counts[suitIndex]++;
+        }
+        return counts;
+    }
 
+    // Check for Flush
+    public static boolean hasFlush(Card[] hand) {
+        int[] counts = suitHist(hand);
+
+        for (int i = 0; i < counts.length; i++) {
+            if (counts[i] >= 5) {
+                return true;
             }
         }
+        return false;
+    }
+
+    // Check for Royal Flush
+    public static boolean hasRoyalFlush(Card[] hand) {
+        int[] counts = suitHist(hand);
+
     }
 
     public static void main(String[] args) {
@@ -83,6 +105,19 @@ public class Card {
         System.out.println(card);
 
         Card[] deck = makeDeck();
-        System.out.println(Arrays.toString(deck));
+        // System.out.println(Arrays.toString(deck));
+
+        Card[] hand = {
+                new Card(1, 2), // Ace of Hearts
+                new Card(13, 2), // King of Hearts
+                new Card(10, 2), // 10 of Hearts
+                new Card(5, 2), // 5 of Hearts
+                new Card(7, 2), // 7 of Hearts
+                new Card(3, 0) // 3 of Clubs
+        };
+        int[] histogram = suitHist(hand);
+        System.out.println("Suit histogram: " + Arrays.toString(histogram));
+
+        System.out.println(hasFlush(hand));
     }
 }
