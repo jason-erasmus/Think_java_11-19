@@ -1,5 +1,4 @@
-// package Chapter_12;
-// package Chapter_11;
+package Chapter_12;
 
 import java.util.Arrays;
 
@@ -96,9 +95,31 @@ public class Card {
 
     // Check for Royal Flush
     public static boolean hasRoyalFlush(Card[] hand) {
-        int[] counts = suitHist(hand);
+        int[] flushRank = { 1, 10, 11, 12, 13 };
+
+        for (int suit = 0; suit < SUITS.length; suit++) {
+            int count = 0;
+            for (int rank : flushRank) {
+                boolean found = false;
+                for (Card card : hand) {
+                    if (card.rank == rank && card.suit == suit) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found)
+                    count++;
+            }
+            if (count == 5)
+                return true;
+        }
+        return false;
 
     }
+
+    // for (String x : isFlush) {
+    // System.out.println(x);
+    // }
 
     public static void main(String[] args) {
         Card card = new Card(11, 1);
@@ -111,13 +132,14 @@ public class Card {
                 new Card(1, 2), // Ace of Hearts
                 new Card(13, 2), // King of Hearts
                 new Card(10, 2), // 10 of Hearts
-                new Card(5, 2), // 5 of Hearts
-                new Card(7, 2), // 7 of Hearts
+                new Card(11, 2), // Jack of Hearts
+                new Card(12, 2), // Queen of Hearts
                 new Card(3, 0) // 3 of Clubs
         };
         int[] histogram = suitHist(hand);
         System.out.println("Suit histogram: " + Arrays.toString(histogram));
 
         System.out.println(hasFlush(hand));
+        System.out.println(hasRoyalFlush(hand));
     }
 }
