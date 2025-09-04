@@ -48,11 +48,11 @@ public class Tile {
     }
 
     // Setters
-    public void setLetter() {
+    public void setLetter(char letter) {
         this.letter = letter;
     }
 
-    public void setValue() {
+    public void setValue(char value) {
         this.value = value;
     }
 

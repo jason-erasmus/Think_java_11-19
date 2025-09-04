@@ -1,4 +1,5 @@
-// package Chapter_11;
+package Chapter_11;
+
 public class Rational {
     private int num;
     private int denom;
@@ -70,9 +71,8 @@ public class Rational {
         Rational r1 = new Rational(2, 3);
         Rational r2 = new Rational(4, 8);
         Rational r3 = new Rational(3, 6);
-        Rational r4 = new Rational(48, 12);
-        Rational r5 = new Rational(2, 3);
-        Rational r6 = new Rational(4, 8);
+        Rational r4 = new Rational(2, 3);
+        Rational r5 = new Rational(4, 8);
 
         printRational(r1);
         System.out.println(r2);
@@ -89,7 +89,7 @@ public class Rational {
         int gcd = reduce(r3.num, r3.denom);
         System.out.println("GCD: " + gcd);
 
-        Rational sum = r5.add(r6);
+        Rational sum = r4.add(r5);
         System.out.println("Sum: " + sum);
     }
 
