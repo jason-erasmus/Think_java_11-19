@@ -3,6 +3,8 @@ package Chapter_13;
 import java.util.Arrays;
 
 public class Card {
+    // Static flag for adjusting Ace value
+    public static boolean aceHigh = true;
 
     private int rank;
     private int suit;
@@ -25,34 +27,15 @@ public class Card {
 
     // Compare card values
     public int compareTo(Card that) {
-        if (this.suit < that.suit) {
-            return -1;
-        }
-        if (this.suit > that.suit) {
-            return 1;
+        if (this.suit != that.suit) {
+            return this.suit - that.suit;
         }
         // Ace adjusted to > than King
-        int thisAceAdjusted;
-        if (this.rank == 1) {
-            thisAceAdjusted = 14;
-        } else {
-            thisAceAdjusted = this.rank;
-        }
+        int thisRank = (this.rank == 1 && aceHigh) ? 14 : this.rank;
 
-        int thatAceAdjusted;
-        if (that.rank == 1) {
-            thatAceAdjusted = 14;
-        } else {
-            thatAceAdjusted = that.rank;
-        }
+        int thatRank = (that.rank == 1 && aceHigh) ? 14 : that.rank;
 
-        if (thisAceAdjusted < thatAceAdjusted) {
-            return -1;
-        }
-        if (thisAceAdjusted > thatAceAdjusted) {
-            return 1;
-        }
-        return 0;
+        return thisRank - thatRank;
     }
 
     // Generate Card Array
